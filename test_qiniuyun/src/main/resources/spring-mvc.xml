@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- 1、自动注册defaultAnnotationHandlermapping ，AnnotationMethodhandlerAdapter，可以根据URL映射到方法-->
+    <context:component-scan base-package="com.lmj"/>
+    <!-- 2、数据绑定，数字和日期的format，如@NumberFormat ,@DateFormat,还有xml和json的默认读写功能 -->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+
+    <!-- 使其支持springmvc在web.xml中的/的路径拦截的配置 -->
+    <mvc:default-servlet-handler/>
+    <!--对于注解的handler可以单个配置，可以每次手动的在配置文件中添加bean注册，但建议使用组件扫描方式注册bean-->
+
+    <!--HttpRequestHandlerAdapter适配器，要求编写handler实现HttpRequestHandler-->
+    <!-- <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"/>-->
+
+    <!-- 视图解析器-->
+    <!--  解析jsp，默认使用jstl，classpath下的有jstl的包，视图解析器的有代码：//classname     javax.servlet.jsp.jstl.core.Config-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <!--日期类型转换-->
+                <!-- <bean class="cn.meko.controller.converter.CustomDateConverter"/>-->
+            </list>
+        </property>
+    </bean>
+    <!-- 指定自己定义的validator -->
+   <!-- <mvc:annotation-driven validator="validator"/>-->
+
+    <!-- 以下 validator  ConversionService 在使用 mvc:annotation-driven 会 自动注册-->
+<!--    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        &lt;!&ndash; 如果不加默认到 使用classpath下的 ValidationMessages.properties &ndash;&gt;
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>-->
+
+    <!-- 国际化的消息资源文件（本系统中主要用于显示/错误消息定制） -->
+ <!--   <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                &lt;!&ndash; 在web环境中一定要定位到classpath 否则默认到当前web应用下找  &ndash;&gt;
+                <value>classpath:validat</value>
+            </list>
+        </property>
+        <property name="useCodeAsDefaultMessage" value="false"/>
+        <property name="defaultEncoding" value="utf-8" />
+        <property name="cacheSeconds" value="60"/>
+    </bean>-->
+    <!--配置校验器结束-->
+    <!--   // 全局异常处理器,只要实现HandlerExceptionResolver，它就是全局异常处理器-->
+    <!-- <bean class="cn.itcast.ssm.exception.CustomExceptionResolver"></bean>-->
+    <!--该解析器其实就是commons文件上传jia包的bean的注入-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--设置最大上传为5mb，不配则会报参数绑定失败-->
+        <property name="maxUploadSize">
+            <value>5242880</value>
+        </property>
+    </bean>
+    <!--    web.xml中，springmvc的映射地址配成  /      则它不支持对静态资源的访问，故须手动配置添加允许访问的资源：-->
+    <!-- <mvc:resources mapping="/js/**" location="/js/"/>-->
+    <!-- <bean>
+
+     </bean>-->
+    <!-- 访问拦截  -->
+    <!-- 拦截所有/**   /*只拦截根-->
+  <!--  <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="cn.itcast.ssm.Interceptor.HandlerInterceptor1"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="cn.itcast.ssm.Interceptor.HandlerInterceptor2"/>
+        </mvc:interceptor>
+        &lt;!&ndash; 登陆认证拦截器&ndash;&gt;
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="cn.itcast.ssm.Interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>-->
+    <!--    使用注解方式配置json转换器，但是如是前面已经写了  <mvc:annotation-driven></mvc:annotation-driven>，则下面可以不用写
+        &lt;!&ndash;注解适配器中加入messageConverters&ndash;&gt;
+        <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+            <property name="messageConverters">
+                <list>
+                    <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>
+                </list>
+            </property>
+        </bean>-->
+</beans>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: asm:asm:3.3.1">
+    <CLASSES>
+      <root url="jar://D:/softManager/install/maven-3.5.4/apache-maven-3.5.4/local_resposity/asm/asm/3.3.1/asm-3.3.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/softManager/install/maven-3.5.4/apache-maven-3.5.4/local_resposity/asm/asm/3.3.1/asm-3.3.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/softManager/install/maven-3.5.4/apache-maven-3.5.4/local_resposity/asm/asm/3.3.1/asm-3.3.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

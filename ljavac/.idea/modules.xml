@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/FinitStateMachine/FinitStateMachine.iml" filepath="$PROJECT_DIR$/FinitStateMachine/FinitStateMachine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LInputSystem/LInputSystem.iml" filepath="$PROJECT_DIR$/LInputSystem/LInputSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lgrammarc/Lgrammarc.iml" filepath="$PROJECT_DIR$/Lgrammarc/Lgrammarc.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.directwebremoting:dwr:3.0.M1">
+    <CLASSES>
+      <root url="jar://D:/softManager/install/maven-3.5.4/apache-maven-3.5.4/local_resposity/org/directwebremoting/dwr/3.0.M1/dwr-3.0.M1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/softManager/install/maven-3.5.4/apache-maven-3.5.4/local_resposity/org/directwebremoting/dwr/3.0.M1/dwr-3.0.M1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/softManager/install/maven-3.5.4/apache-maven-3.5.4/local_resposity/org/directwebremoting/dwr/3.0.M1/dwr-3.0.M1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
